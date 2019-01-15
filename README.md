@@ -2,7 +2,7 @@
 created for deployment.
 
 Please Visit our Original repo at https://github.com/justnsig/GitGoing
-A learning application created in react native.
+\nA learning application created in react native.
 
 Colaberated and Created with 
 Heather Drattlo(hDratto) UX/AntiClippy/Styling
