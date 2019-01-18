@@ -5,7 +5,9 @@ import Routes from './src/Routes';
 export default class App extends React.Component {
   render() {
     return ( 
+      <View style={StyleSheet.absoluteFill}>
          <Routes />
+         </View>
     );
   }
 }

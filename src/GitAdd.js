@@ -9,6 +9,7 @@ const GitAdd = () => {
       Actions.gitStash()
    }
    return ( 
+      <View style={StyleSheet.absoluteFill}>
       <View style={styles.container}>
       <View style={styles.brownBox}><Animatable.Text animation="zoomInUp"><Text style={styles.title}>Git Add</Text></Animatable.Text>
       <View style={styles.circle1}>
@@ -26,7 +27,7 @@ const GitAdd = () => {
          />
       </TouchableOpacity>
       </View>
-        
+      </View>  
          
    )
 }

@@ -26,7 +26,8 @@ export default class InputBox extends Component {
   
 render(){
    return (
-    
+      <View style={StyleSheet.absoluteFill}>
+      <View style={styles.main}>
       <View style={styles.container}>
       <View style={styles.textBox1}>
       <View style={styles.circle}>
@@ -38,6 +39,7 @@ render(){
       <TouchableOpacity style = {{ marginTop: 250 }}> 
     
          <Button 
+         style={styles.bottom}
          onPress = {goToGitInit}
          title= "GitGoing to Git Init"
          color='#FF6D70'
@@ -45,11 +47,20 @@ render(){
       </TouchableOpacity>
       <Text style={styles.p}>Would you like to learn more?</Text>
       </View>
-     
+      </View>
+      </View>
    )
 }
 }
 const styles = StyleSheet.create({
+  bottom: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    marginBottom: 36
+  },
+  main:{
+    flex: 1
+  },
    container: {
       flex: 1,
       backgroundColor: '#4A4843',

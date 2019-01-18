@@ -9,6 +9,7 @@ const GitClone = () => {
       Actions.gitStatus()
    }
    return (
+      <View style={StyleSheet.absoluteFill}>
       <View style={styles.container}>
       <View style={styles.brownBox}>
       <Animatable.Text animation="zoomInDown"><Text style={styles.title}>Git Clone</Text></Animatable.Text>
@@ -27,7 +28,7 @@ const GitClone = () => {
          />
       </TouchableOpacity>
       </View>
-         
+      </View>   
       
    )
 }

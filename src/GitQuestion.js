@@ -1,40 +1,75 @@
-import React from 'react'
-import { TouchableOpacity, Text, Button, StyleSheet, View } from 'react-native'
+import React, {Component} from 'react'
+import { TouchableOpacity, Text, Button, StyleSheet, View, TextInput } from 'react-native'
+import {Form, Input} from 'native-base';
 import { Actions } from 'react-native-router-flux'
-import AntiClippyL from './AntiClippyL'
+import AntiClippy from './AntiClippy'
 import * as Animatable from 'react-native-animatable'
-//route to push
-const GitReset = () => {
-   const goToPush = () => {
-      Actions.gitPush()
-   }
+import { askClip } from '../QA/anticlipQA';
+// route to question
+const goToHome = () => {
+    Actions.home()
+}
+export default class InputBox extends Component {
+
+constructor(props){
+    super(props)
+
+    this.state = ({
+    question: ''
+    })
+}
+render(){
    return (
       <View style={StyleSheet.absoluteFill}>
+      <View style={styles.main}>
       <View style={styles.container}>
       <View style={styles.brownBox}>
-      <Animatable.Text animation="zoomInDown"><Text style={styles.title}>Git Reset</Text></Animatable.Text>
+      <Text style={styles.title}>Got Questions</Text>
       <View style={styles.circle1}>
-      <AntiClippyL style={styles.AntiClippy}/>
-      <Text style={styles.p}>Oh S#!% button!! Undoes all commits, preserving changes locally. Start over if needed.. Type <Text style={{ fontWeight: 'bold' }}>git reset</Text> to discard last commit. *Note: you MUST do this before you push!!</Text>
-   
-      
+      <Text style={styles.p}>Have Questions?  Ask clippy what kind of Git operation you need help with...</Text> 
+      <Animatable.View animation="bounceInRight"><AntiClippy style={styles.AntiClippy}/></Animatable.View>
      
       </View>
       </View>
+      <Form>
+      <View style={styles.textBox1} >   
+      <TextInput 
+        placeholder="Your Git Question Here..."
+        onChangeText={(text) => this.setState({question: text})}
+        value={this.state.question} 
+        autoCorrect = {false}
+        ></TextInput>
+        </View>
       <TouchableOpacity style={styles.button}>
          <Button 
-         onPress = {goToPush}
-         title= "GitGoing to Git Push"
+         onPress = {() => console.log(askClip(this.state.question))}
+         title= "Ask Clippy"
          color='#FF6D70'
          />
       </TouchableOpacity>
+      </Form>
       </View>
       </View>   
-         
+      </View>   
    )
+}
 }
 //style
 const styles = StyleSheet.create({
+   main:{
+      flex: 1
+   },
+
+   textBox1: {
+      backgroundColor: '#A79B82',
+      width: 500,
+      height: 350,
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderRadius: 30,
+      marginTop: 50,
+    },
+
    container: {
       flex: 1,
       backgroundColor: '#4A4843',
@@ -47,12 +82,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
-    fontSize: 50,
+    fontSize: 60,
     textShadowColor: 'rgba(0, 0, 0, 0.75)',
     textShadowOffset: {width: -1, height: 1},
     textShadowRadius: 10,
-    marginTop: 40,
-    paddingTop: 175,
+    marginTop: 0,
+    paddingTop: 75,
     
    },
    //white circle
@@ -78,7 +113,7 @@ const styles = StyleSheet.create({
    alignItems: 'center',
    justifyContent: 'center',
    borderRadius: 220,
-   marginTop: 30,
+   marginTop: 50,
    paddingBottom: 25,
  },
 
@@ -104,4 +139,3 @@ const styles = StyleSheet.create({
 
 
  });
-export default GitReset

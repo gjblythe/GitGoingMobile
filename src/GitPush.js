@@ -9,6 +9,7 @@ const GitPush = () => {
       Actions.home()
    }
    return (
+      <View style={StyleSheet.absoluteFill}>
       <View style={styles.container}>
       <View style={styles.brownBox}><Text style={styles.title}>Git Push</Text>
       <View style={styles.circle1}>
@@ -26,7 +27,7 @@ const GitPush = () => {
          />
       </TouchableOpacity>
       </View>
-        
+      </View>  
         
    )
 }
