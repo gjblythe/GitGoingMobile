@@ -10,6 +10,7 @@ const GitCommit = () => {
       Actions.gitReset()
    }
    return (
+      <View style={StyleSheet.absoluteFill}>
       <View style={styles.container}>
       <View style={styles.brownBox}>
       <Animatable.Text animation="zoomInDown"><Text style={styles.title}>Git Commit</Text></Animatable.Text>
@@ -28,7 +29,7 @@ const GitCommit = () => {
          />
       </TouchableOpacity>
       </View>
-         
+      </View>   
        
    )
 }

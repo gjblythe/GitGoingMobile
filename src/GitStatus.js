@@ -9,6 +9,7 @@ const GitStatus = () => {
       Actions.gitPull()
    }
    return (
+      <View style={StyleSheet.absoluteFill}>
       <View style={styles.container}>
       <View style={styles.brownBox}>
       <Text style={styles.title}>Git Status</Text>
@@ -26,7 +27,7 @@ const GitStatus = () => {
          />
       </TouchableOpacity>
       </View>
-         
+      </View>   
          
    )
 }

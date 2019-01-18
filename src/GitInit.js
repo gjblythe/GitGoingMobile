@@ -12,6 +12,7 @@ const GitInit = () => {
    }
  
    return (
+      <View style={StyleSheet.absoluteFill}>
       <View style={styles.container}>
       
       <View style={styles.brownBox}><Animatable.Text animation="zoomInUp"><Text style={styles.title}>Git Init</Text></Animatable.Text>
@@ -29,6 +30,7 @@ const GitInit = () => {
          color='#FF6D70'
          />
       </TouchableOpacity>
+      </View>
       </View>
    )
 }
