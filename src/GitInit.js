@@ -1,8 +1,11 @@
 import React from 'react'
+import { widthPercentageToDP as wp} from "react-native-responsive-screen";
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { TouchableOpacity, Text, Button, StyleSheet, View } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import AntiClippy from './AntiClippy';
 import * as Animatable from 'react-native-animatable';
+import { widthPercentageToDP } from 'react-native-responsive-screen';
 
 //route to clone
 const GitInit = () => {
@@ -12,7 +15,6 @@ const GitInit = () => {
    }
  
    return (
-      <View style={StyleSheet.absoluteFill}>
       <View style={styles.container}>
       
       <View style={styles.brownBox}><Animatable.Text animation="zoomInUp"><Text style={styles.title}>Git Init</Text></Animatable.Text>
@@ -30,7 +32,6 @@ const GitInit = () => {
          color='#FF6D70'
          />
       </TouchableOpacity>
-      </View>
       </View>
    )
 }
@@ -52,21 +53,21 @@ const styles = StyleSheet.create({
     textShadowColor: 'rgba(0, 0, 0, 0.75)',
     textShadowOffset: {width: -1, height: 1},
     textShadowRadius: 10,
-    marginTop: 10,
-    paddingTop: 95,
+    marginTop: hp('1%'),
+    paddingTop: hp('3%'),
     
    },
    //white circle
   circle1: {
    backgroundColor: '#fff',
-   width: 400,
-   height: 400,
+   width: wp('100%'),
+   height: hp('50%'),
    alignItems: 'center',
    justifyContent: 'center',
-   borderRadius: 200,
+   borderRadius: hp('30%'),
    borderColor: '#4A4843',
    borderWidth: 15,
-   marginTop:60,
+   marginTop: hp('1%'),
    flexDirection: 'row',
    alignItems: 'center',
    
@@ -75,11 +76,11 @@ const styles = StyleSheet.create({
  brownBox: {
    backgroundColor: '#A79B82',
    width: 410,
-   height:575,
-   alignItems: 'center',
+   height:hp('75%'),
    justifyContent: 'center',
+   alignItems: "center",
    borderRadius: 220,
-   marginTop: 50,
+   marginTop: hp('2%'),
    paddingBottom: 5,
  },
 
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
  
  button: {
     color:'#FF6D70',
-    marginTop: 20,
+    marginTop: hp('3%'),
  },
  p:{
     color: 'black',

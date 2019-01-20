@@ -2,12 +2,10 @@ import React, {Component} from 'react';
 import { TouchableOpacity, Text, Button, StyleSheet, View } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { TextInput } from "react-native";
+import { widthPercentageToDP as wp} from "react-native-responsive-screen";
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import AntiClippyHalf from './AntiClippyHalf';
-import * as Animatable from 'react-native-animatable'
-
-// init.startApp();
-
-// App.initializeApp();
+import * as Animatable from 'react-native-animatable';
 
 const goToGitInit = () => {
    Actions.gitInit()
@@ -26,20 +24,17 @@ export default class InputBox extends Component {
   
 render(){
    return (
-      <View style={StyleSheet.absoluteFill}>
-      <View style={styles.main}>
+    
       <View style={styles.container}>
       <View style={styles.textBox1}>
       <View style={styles.circle}>
       <Animatable.View animation="fadeInDown"><AntiClippyHalf style={styles.AntiClippyHalf}/></Animatable.View>
       <Animatable.Text animation="rubberBand"><Text style={styles.title}>GitGoing</Text></Animatable.Text>
       </View>
-      
       </View> 
-      <TouchableOpacity style = {{ marginTop: 250 }}> 
+      <TouchableOpacity style = {{ marginTop: hp('35%') }}> 
     
          <Button 
-         style={styles.bottom}
          onPress = {goToGitInit}
          title= "GitGoing to Git Init"
          color='#FF6D70'
@@ -47,20 +42,11 @@ render(){
       </TouchableOpacity>
       <Text style={styles.p}>Would you like to learn more?</Text>
       </View>
-      </View>
-      </View>
+     
    )
 }
 }
 const styles = StyleSheet.create({
-  bottom: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    marginBottom: 36
-  },
-  main:{
-    flex: 1
-  },
    container: {
       flex: 1,
       backgroundColor: '#4A4843',
@@ -77,35 +63,37 @@ const styles = StyleSheet.create({
     textShadowOffset: {width: -1, height: 1},
     textShadowRadius: 10,
     marginTop: 0,
-    marginBottom: 0,
+    marginBottom: hp('1%'),
    },
    //white circle
   circle: {
    backgroundColor: '#fff',
-   width: 400,
-   height: 400,
+   width: wp('90%'),
+   height: hp('50%'),
    alignItems: 'center',
    justifyContent: 'center',
-   borderRadius: 200,
+   borderRadius: wp('100%'),
    borderColor: '#4A4843',
    borderWidth: 25,
-   marginTop:220,
+   marginTop: hp('25%'),
    
  },
  //brown box
  textBox1: {
    backgroundColor: '#A79B82',
-   width: 500,
-   height: 350,
+   width: wp('100%'),
+   height: hp('40%'),
    alignItems: 'center',
    justifyContent: 'center',
-   borderRadius: 30,
-   marginTop: 50,
+   marginTop: hp("2%"),
  },
 
 //logo
  AntiClippyHalf: {
-   flex: 1
+   flex: 1,
+   width: wp('20%'),
+   height: hp('20%'),
+   
  },
 
  //username
@@ -115,8 +103,9 @@ const styles = StyleSheet.create({
    borderColor: 'black',
    backgroundColor: '#FFF',
    borderRadius: 20,
-   width: 200,
-   marginTop: 0,
+   width: wp('50%'),
+   height: hp('5%'),
+   marginTop: wp('5%'),
    alignItems: 'center',   
    
  },
@@ -128,9 +117,10 @@ const styles = StyleSheet.create({
    borderColor: 'black',
    backgroundColor: '#FFF',
    borderRadius: 20,
-   width: 200,
-   marginTop: 10,
-   marginBottom: 20,
+   width: wp('50%'),
+   height: hp('5%'),
+   marginTop: hp('1%'),
+   marginBottom: hp('1%'),
    alignItems: 'center',
  },
 
