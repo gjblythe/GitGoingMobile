@@ -1,10 +1,13 @@
 import React, {Component} from 'react'
+import { widthPercentageToDP as wp} from "react-native-responsive-screen";
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { TouchableOpacity, Text, Button, StyleSheet, View, TextInput } from 'react-native'
-import {Form, Input} from 'native-base';
+import {Form} from 'native-base';
 import { Actions } from 'react-native-router-flux'
 import AntiClippy from './AntiClippy'
 import * as Animatable from 'react-native-animatable'
 import { askClip } from '../QA/anticlipQA';
+
 // route to question
 const goToHome = () => {
     Actions.home()
@@ -15,61 +18,56 @@ constructor(props){
     super(props)
 
     this.state = ({
-    question: ''
+    question: '',
+    return: '',
     })
 }
+
+componentDidMount(){
+   this.setState({return: 'Have Questions?  Ask Anti-Clippy what kind of Git operation you need help with...'})
+}
+
 render(){
    return (
-      <View style={StyleSheet.absoluteFill}>
-      <View style={styles.main}>
       <View style={styles.container}>
-      <View style={styles.brownBox}>
+     
       <Text style={styles.title}>Got Questions</Text>
       <View style={styles.circle1}>
-      <Text style={styles.p}>Have Questions?  Ask clippy what kind of Git operation you need help with...</Text> 
+      <Text style={styles.p}>{this.state.return}</Text> 
       <Animatable.View animation="bounceInRight"><AntiClippy style={styles.AntiClippy}/></Animatable.View>
      
-      </View>
+ 
       </View>
       <Form>
-      <View style={styles.textBox1} >   
-      <TextInput 
-        placeholder="Your Git Question Here..."
+      <TextInput style={styles.textInput1}
+        placeholder="   Your Git Question Here..."
         onChangeText={(text) => this.setState({question: text})}
         value={this.state.question} 
         autoCorrect = {false}
         ></TextInput>
-        </View>
       <TouchableOpacity style={styles.button}>
          <Button 
-         onPress = {() => console.log(askClip(this.state.question))}
-         title= "Ask Clippy"
+         onPress = {() => this.setState({return: askClip(this.state.question), question: ''})}
+         title= "Ask Anti-Clippy"
+         color='#FF6D70'
+         />
+         </TouchableOpacity>
+         <TouchableOpacity>
+         <Button 
+         onPress = {goToHome}
+         title= "GitGoing Back Home"
          color='#FF6D70'
          />
       </TouchableOpacity>
       </Form>
       </View>
-      </View>   
-      </View>   
+         
+         
    )
 }
 }
 //style
 const styles = StyleSheet.create({
-   main:{
-      flex: 1
-   },
-
-   textBox1: {
-      backgroundColor: '#A79B82',
-      width: 500,
-      height: 350,
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderRadius: 30,
-      marginTop: 50,
-    },
-
    container: {
       flex: 1,
       backgroundColor: '#4A4843',
@@ -80,27 +78,26 @@ const styles = StyleSheet.create({
       color: '#FF6D70',
     fontWeight: 'bold',
     justifyContent: 'center',
-    alignItems: 'center',
+    
     flexDirection: 'column',
-    fontSize: 60,
+    fontSize: hp('5%'),
     textShadowColor: 'rgba(0, 0, 0, 0.75)',
     textShadowOffset: {width: -1, height: 1},
     textShadowRadius: 10,
     marginTop: 0,
-    paddingTop: 75,
+    paddingTop: hp('5%'),
     
    },
    //white circle
   circle1: {
    backgroundColor: '#fff',
    width: 400,
-   height: 400,
-   alignItems: 'center',
+   height: hp('50%'),
    justifyContent: 'center',
    borderRadius: 200,
    borderColor: '#4A4843',
    borderWidth: 15,
-   marginTop:60,
+   marginTop:hp('1%'),
    flexDirection: 'row',
    alignItems: 'center',
    
@@ -108,13 +105,10 @@ const styles = StyleSheet.create({
  //brown box
  brownBox: {
    backgroundColor: '#A79B82',
-   width: 410,
-   height:575,
+   width: wp('10%'),
+   height:hp('100%'),
    alignItems: 'center',
-   justifyContent: 'center',
-   borderRadius: 220,
-   marginTop: 50,
-   paddingBottom: 25,
+   justifyContent: 'center'
  },
 
 //logo
@@ -126,7 +120,8 @@ const styles = StyleSheet.create({
  
  button: {
     color:'#FF6D70',
-    marginTop: 20,
+    marginTop: hp('3%'),
+    marginBottom: hp('1%'),
  },
  p:{
     color: 'black',
@@ -135,6 +130,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     fontSize: 18,
 
+ },
+ textInput1: {
+   color: 'black',
+   borderWidth: 2,
+   borderColor: 'black',
+   alignItems:'center',
+   justifyContent:'center',
+   backgroundColor: '#FFF',
+   borderRadius: 20,
+   width: wp('60%'),
+   height: hp('5%'),
+   marginTop: wp('3%'),
+      
+   
  },
 
 
